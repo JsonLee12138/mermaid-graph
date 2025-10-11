@@ -1,6 +1,6 @@
 # Mermaid Graph
 
-[中文文档](./README.zh-CN.md)
+[中文文档](https://github.com/JsonLee12138/mermaid-graph/blob/main/README.zh-CN.md)
 
 A powerful Mermaid diagram preview and syntax highlighting extension for Visual Studio Code with complete Mermaid support.
 
@@ -21,6 +21,7 @@ A powerful Mermaid diagram preview and syntax highlighting extension for Visual 
   - Git Graph
   - Pie Chart
   - User Journey
+  - C4 Diagram (Context, Container, Component, Dynamic, Deployment)
   - And more diagram types...
 
 ### 🔍 Real-time Preview
@@ -78,11 +79,11 @@ We're actively working on improving Mermaid Graph. Here's what's planned:
 - ⚡ **Performance Optimization**: Faster rendering for complex diagrams
 - 🔄 **Live Collaboration**: Real-time diagram collaboration support
 
-Have a feature request? [Let us know!](https://github.com/JsonLee12138/mmdx/issues)
+Have a feature request? [Let us know!](https://github.com/JsonLee12138/mermaid-graph/issues)
 
 ## 🐛 Known Issues
 
-No major known issues at this time. If you encounter any problems, please report them on [GitHub Issues](https://github.com/JsonLee12138/mmdx/issues).
+No major known issues at this time. If you encounter any problems, please report them on [GitHub Issues](https://github.com/JsonLee12138/mermaid-graph/issues).
 
 ## 📋 Release Notes
 
@@ -106,7 +107,7 @@ MIT
 
 ## 🔗 Links
 
-- [GitHub Repository](https://github.com/JsonLee12138/mmdx)
+- [GitHub Repository](https://github.com/JsonLee12138/mermaid-graph)
 - [Mermaid Official Documentation](https://mermaid.js.org/)
 - [VSCode Marketplace](https://marketplace.visualstudio.com/)
 

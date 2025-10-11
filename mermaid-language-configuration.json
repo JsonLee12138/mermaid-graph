@@ -23,7 +23,7 @@
   ],
 	"folding": {
     "markers": {
-      "start": "^\\s*\\b(graph|flowchart|sequenceDiagram|gantt|classDiagram|stateDiagram|pie|erDiagram|journey|requirementDiagram|gitGraph)\b",
+      "start": "^\\s*\\b(graph|flowchart|sequenceDiagram|gantt|classDiagram|stateDiagram|pie|erDiagram|journey|requirementDiagram|gitGraph|c4Context)\b",
       "end": "^\\s*$"
     }
   }

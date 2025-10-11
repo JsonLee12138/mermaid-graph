@@ -1,6 +1,6 @@
 # Mermaid Graph
 
-[English](./README.md)
+[English Document](https://github.com/JsonLee12138/mermaid-graph/blob/main/README.md)
 
 一个强大的 Mermaid 图表预览和语法高亮扩展，为 Visual Studio Code 提供完整的 Mermaid 支持。
 
@@ -21,6 +21,7 @@
   - Git 图（Git Graph）
   - 饼图（Pie Chart）
   - 用户旅程图（User Journey）
+  - C4 图表（C4 Context、Container、Component、Dynamic、Deployment）
   - 以及更多图表类型...
 
 ### 🔍 实时预览
@@ -78,11 +79,11 @@ graph TD
 - ⚡ **性能优化**：更快地渲染复杂图表
 - 🔄 **实时协作**：支持实时图表协作
 
-有功能建议？[告诉我们！](https://github.com/JsonLee12138/mmdx/issues)
+有功能建议？[告诉我们！](https://github.com/JsonLee12138/mermaid-graph/issues)
 
 ## 🐛 已知问题
 
-目前暂无已知的重大问题。如果你遇到任何问题，请在 [GitHub Issues](https://github.com/JsonLee12138/mmdx/issues) 中报告。
+目前暂无已知的重大问题。如果你遇到任何问题，请在 [GitHub Issues](https://github.com/JsonLee12138/mermaid-graph/issues) 中报告。
 
 ## 📋 更新日志
 
@@ -106,7 +107,7 @@ MIT
 
 ## 🔗 相关链接
 
-- [GitHub 仓库](https://github.com/JsonLee12138/mmdx)
+- [GitHub 仓库](https://github.com/JsonLee12138/mermaid-graph)
 - [Mermaid 官方文档](https://mermaid.js.org/)
 - [VSCode 扩展市场](https://marketplace.visualstudio.com/)
 

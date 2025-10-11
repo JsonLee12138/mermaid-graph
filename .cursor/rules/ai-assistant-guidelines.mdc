@@ -1,0 +1,305 @@
+# AI Assistant Guidelines
+
+This file defines the rules and behavior guidelines that AI assistants should follow when assisting with Mermaid Graph project development.
+
+## Directory Structure Rules
+
+### Mandatory Rules
+
+When AI assistants need to create the following types of files, they **MUST** be placed in the specified directories:
+
+| File Type | Directory | Description |
+|-----------|-----------|-------------|
+| Implementation Plans | `/plans/` | Feature plans, design proposals, architecture docs |
+| Task Tracking | `/tasks/` | Task lists, progress tracking, to-dos |
+| Technical Documentation | `/docs/` | Specifications, summaries, guides, references |
+
+### Automatic Behaviors
+
+1. **Auto-create directories**
+   - Create directories if they don't exist
+   - Create `README.md` index file when creating directory
+
+2. **Auto-create indexes**
+   - Each directory must have `README.md` as index
+   - Update index when adding new files
+
+3. **Auto-establish links**
+   - Link between Plan ↔ Task ↔ Summary documents
+   - Add references in related documents
+
+---
+
+## Document Creation Workflow
+
+### New Feature Development Flow
+
+```
+Receive Feature Request → Assess Complexity
+                       ↓
+          Level 2-4 → Create Plan Document
+          Level 1 → Direct Implementation
+                       ↓
+            Create/Update Task Tracking
+                       ↓
+                  Development
+                       ↓
+              Update Task Progress
+                       ↓
+                  Completion
+                       ↓
+           Create Implementation Summary
+                       ↓
+              Update All Indexes
+```
+
+### 1. Planning Phase
+
+```bash
+When creating new feature plan:
+1. Create /plans/[feature-name].md
+2. Use standard plan template
+3. Add index entry in /plans/README.md
+4. Add task item in /tasks/current-tasks.md
+```
+
+### 2. Implementation Tracking Phase
+
+```bash
+During development:
+1. Update progress in /tasks/current-tasks.md in real-time
+2. Mark completed steps as [x]
+3. Record encountered issues and solutions
+```
+
+### 3. Completion Summary Phase
+
+```bash
+After feature completion:
+1. Create /docs/[feature-name]-summary.md
+2. Record implementation process, challenges, and solutions
+3. Update /docs/README.md index
+4. Move task from current to completed
+```
+
+---
+
+## Naming Conventions
+
+### File Naming
+
+- **Format**: kebab-case (lowercase, hyphen-separated)
+- **Descriptive**: Filenames should clearly describe content
+- **Avoid**: Abbreviations, code, dates
+
+**✅ Good Naming**:
+- `add-c4-diagram-support.md`
+- `syntax-grammar-specification.md`
+- `refactor-webview-renderer.md`
+
+**❌ Bad Naming**:
+- `plan1.md`
+- `doc_2024.md`
+- `TODO.md`
+
+### Directory Naming
+
+- **plans**: plural form
+- **tasks**: plural form
+- **docs**: plural form
+
+---
+
+## Document Templates
+
+### Plan Document Template
+
+```markdown
+# [Feature Name] - Implementation Plan
+
+## Task Overview
+**Complexity Level**: Level X (description)
+**Status**: Planning/In Progress/Completed
+**Estimated Time**: X hours
+
+## Requirements Analysis
+- Functional requirements
+- Technical requirements
+
+## Implementation Steps
+1. Step 1
+2. Step 2
+
+## File Checklist
+**New**:
+- file1.ts
+**Modified**:
+- file2.ts
+
+## Potential Challenges
+1. Challenge description
+   - Solution
+
+## Success Criteria
+- [ ] Criterion 1
+- [ ] Criterion 2
+```
+
+### Task Tracking Template
+
+```markdown
+# Current Tasks
+
+## [Feature Name]
+**Complexity**: Level X
+**Status**: In Progress
+**Plan**: [Link to plan document]
+
+### Progress Checklist
+- [x] Completed step
+- [~] In progress step
+- [ ] To-do step
+
+### File Changes
+- [x] file1.ts
+- [ ] file2.ts
+```
+
+### Implementation Summary Template
+
+```markdown
+# [Feature Name] - Implementation Summary
+
+## Overview
+Brief description of implementation
+
+## Completed Work
+1. Work item 1
+2. Work item 2
+
+## Technical Details
+Key technical implementation notes
+
+## Challenges Encountered
+1. Challenge 1
+   - Solution
+
+## File Change Statistics
+- New: X files
+- Modified: Y files
+
+## Next Steps
+- Remaining items
+```
+
+---
+
+## Index Maintenance
+
+### Plans Index Format
+
+```markdown
+# Plans Directory
+
+## Current Plans
+- [Feature Name](feature-name.md) - Status: In Progress
+
+## Completed Plans
+- [Feature Name](feature-name.md) - Completed: 2025-10-11
+
+## Plan Template
+[Link to template]
+```
+
+### Tasks Index Format
+
+```markdown
+# Task Tracking
+
+## In Progress
+- [Feature Name](current-tasks.md#feature-name) - Level X
+
+## To Start
+- Feature Name - Level X
+
+## Completed
+See [completed-tasks.md](completed-tasks.md)
+```
+
+### Docs Index Format
+
+```markdown
+# Documentation Directory
+
+## Specification Documents
+- [Document Name](doc-name.md) - Brief description
+
+## Implementation Summaries
+- [Summary Name](summary-name.md) - Date
+
+## Guide Documents
+- [Guide Name](guide-name.md) - Brief description
+```
+
+---
+
+## Quick Reference
+
+### Common Operations (AI Internal Logic)
+
+```bash
+# Create new plan
+1. Create plans/[feature].md
+2. Update plans/README.md
+3. Create tasks/current-tasks.md entry
+
+# Update progress
+1. Update checkbox in tasks/current-tasks.md
+2. Add notes explaining progress
+
+# Complete task
+1. Create docs/[feature]-summary.md
+2. Update docs/README.md
+3. Move task to tasks/completed-tasks.md
+4. Update plans/README.md status
+```
+
+### File Path Quick Lookup
+
+```bash
+Plan documents: /plans/*.md
+Task tracking: /tasks/*.md
+Technical docs: /docs/*.md
+Index files: */README.md
+```
+
+---
+
+## Prohibited Behaviors
+
+1. **DON'T** create plan/task/doc files outside these three directories
+2. **DON'T** use Chinese filenames (unless specifically instructed)
+3. **DON'T** create orphaned files without indexes
+4. **DON'T** forget to establish links between documents
+5. **DON'T** delete user-created custom files
+
+---
+
+## Checklist
+
+Before completing a task, AI should confirm:
+
+- [ ] All new files are in correct directories
+- [ ] All index files are updated
+- [ ] Related documents have links
+- [ ] Filenames follow naming convention
+- [ ] Task progress is updated
+- [ ] Implementation summary created if completed
+
+---
+
+**Version**: 1.0
+**Effective Date**: 2025-10-11
+**Applicable To**: All AI assistants (Claude, GPT, etc.)
+alwaysApply: true
+---

@@ -1,0 +1,227 @@
+# Project Structure Specification
+
+## Directory Organization
+
+This project uses the following directory structure to organize project documentation, plans, and tasks:
+
+### Core Directories
+
+#### 1. `/plans` - Implementation Plans Directory
+**Purpose**: Store all feature implementation plans and design proposals
+
+**Contents**:
+- Feature implementation plan documents
+- Technical design proposals
+- Architecture design documents
+- Migration plans
+
+**Naming Convention**:
+- Use kebab-case (hyphen-separated)
+- Descriptive filenames
+- Examples: `add-new-diagram-support.md`, `refactor-syntax-parser.md`
+
+**Complexity Levels**:
+- Level 1: Minor changes (optional plan)
+- Level 2: Simple enhancements (basic plan)
+- Level 3: Medium features (detailed plan)
+- Level 4: Major features (comprehensive plan + phased)
+
+**Plan Document Template**:
+```markdown
+# [Feature Name] - Implementation Plan
+
+## Task Overview
+- Goal description
+- Complexity assessment (Level 1-4)
+- Estimated time
+
+## Requirements Analysis
+- Functional requirements
+- Technical requirements
+
+## Implementation Steps
+1. Step 1
+2. Step 2
+
+## File Checklist
+**New**:
+- file1.ts
+**Modified**:
+- file2.ts
+
+## Potential Challenges
+1. Challenge description
+   - Solution
+
+## Success Criteria
+- [ ] Criterion 1
+- [ ] Criterion 2
+```
+
+---
+
+#### 2. `/tasks` - Task Tracking Directory
+**Purpose**: Store task tracking files and progress records
+
+**Contents**:
+- Current task lists
+- Task progress tracking
+- Completed tasks archive
+- Future task planning
+
+**Main Files**:
+- `current-tasks.md` - Tasks in progress
+- `completed-tasks.md` - Completed tasks archive
+- `future-tasks.md` - Planned future tasks
+- `task-template.md` - Task document template
+
+**Task Status Markers**:
+- `[ ]` - To do
+- `[x]` - Done
+- `[~]` - In progress
+- `[-]` - Cancelled
+
+---
+
+#### 3. `/docs` - Technical Documentation Directory
+**Purpose**: Store technical specifications, API docs, implementation summaries, etc.
+
+**Contents**:
+- Technical specification documents
+- API reference documentation
+- Implementation summaries
+- Development guides
+- Best practices
+
+**Document Types**:
+1. **Specification Documents**: Define standards, processes, and best practices
+2. **Implementation Summaries**: Record detailed process of completed work
+3. **Reference Documents**: Technical references and examples
+4. **Guide Documents**: Development and usage guides
+
+**Naming Convention**:
+- Use kebab-case
+- Descriptive filenames
+- Examples: `syntax-grammar-specification.md`, `api-reference.md`
+
+---
+
+## Git Ignore Rules
+
+All three directories are added to `.gitignore` and **will NOT be committed to the Git repository**.
+
+Reasons:
+1. **Personalized Content**: These are personal notes and plans during project development
+2. **Dynamic Changes**: Content changes frequently, not suitable for version control
+3. **Avoid Conflicts**: Team members can have their own task and planning systems
+4. **Stay Clean**: Keep repository focused on source code and essential documentation
+
+---
+
+## AI Assistant Usage Guidelines
+
+### When Creating New Plans
+
+```
+When implementing new features:
+1. Create plan document in /plans directory
+2. Create or update task tracking in /tasks directory
+3. After implementation, create summary in /docs directory
+```
+
+### Document Creation Flow
+
+```
+Requirement Analysis → /plans/[feature].md (Plan)
+                    ↓
+                 Development
+                    ↓
+                 Task Tracking → /tasks/current-tasks.md (Progress)
+                    ↓
+                 Completion Summary → /docs/[feature]-summary.md (Summary)
+```
+
+### Directory Indexes
+
+Each directory should contain a `README.md` as an index file:
+- `plans/README.md` - Plans directory index
+- `tasks/README.md` - Tasks directory index
+- `docs/README.md` - Docs directory index
+
+---
+
+## Best Practices
+
+### 1. Keep Documents Synchronized
+- Plan documents should be created before implementation
+- Task tracking should be updated in real-time
+- Implementation summaries should be written immediately after completion
+
+### 2. Clear Naming
+- Use descriptive filenames
+- Avoid abbreviations and code
+- Maintain naming consistency
+
+### 3. Appropriate Granularity
+- Level 1-2: Simple tasks, simplified plan
+- Level 3-4: Complex tasks, detailed plan
+
+### 4. Link References
+- Establish links between documents
+- Plan ↔ Task ↔ Summary cross-reference
+- Easy to trace and find
+
+### 5. Regular Organization
+- Move completed tasks to archive
+- Clean up outdated plan documents
+- Update directory indexes
+
+---
+
+## Example Structure
+
+```
+mermaid-graph/
+├── plans/                          # Plans directory (git ignored)
+│   ├── README.md                   # Plans index
+│   ├── add-c4-diagram-support.md   # Specific plan
+│   └── refactor-parser.md          # Specific plan
+├── tasks/                          # Tasks directory (git ignored)
+│   ├── README.md                   # Tasks index
+│   ├── current-tasks.md            # Current tasks
+│   ├── completed-tasks.md          # Completed tasks
+│   └── future-tasks.md             # Future tasks
+├── docs/                           # Docs directory (git ignored)
+│   ├── README.md                   # Docs index
+│   ├── syntax-grammar-specification.md
+│   └── c4-diagram-implementation-summary.md
+├── src/                            # Source code (git tracked)
+├── package.json                    # Project config (git tracked)
+└── README.md                       # Project readme (git tracked)
+```
+
+---
+
+## Important Reminders
+
+### AI Assistant Behavior Rules
+
+1. **Auto-create directories**: When creating plans or documents, auto-create in correct directory
+2. **Follow naming convention**: Always use kebab-case and descriptive filenames
+3. **Create indexes**: When creating new directory, also create README.md index
+4. **Update references**: When creating new document, update related indexes and links
+5. **Maintain structure**: Don't create plan/task/doc files outside these three directories
+
+### User Collaboration
+
+1. **Personal customization**: Users can adjust directory contents according to their habits
+2. **No team impact**: These directories are git ignored, won't affect other developers
+3. **Optional use**: If not needed, can completely skip using these directories
+
+---
+
+**Specification Version**: 1.0
+**Last Updated**: 2025-10-11
+**Scope**: All AI assistants and project contributors
+alwaysApply: true
+---
