@@ -1,0 +1,30 @@
+﻿{
+	"comments": {
+		"lineComment": "%%"
+	},
+	"brackets": [
+    ["{ ", " }"],
+    ["[", "]"],
+    ["(", ")"]
+  ],
+	"autoClosingPairs": [
+    { "open": "{ ", "close": " }" },
+    { "open": "[", "close": "]" },
+    { "open": "(", "close": ")" },
+    { "open": "'", "close": "'", "notIn": ["string", "comment"] },
+    { "open": "\"", "close": "\"", "notIn": ["string"] }
+  ],
+	"surroundingPairs": [
+    ["{ ", " }"],
+    ["[", "]"],
+    ["(", ")"],
+    ["'", "'"],
+    ["\"", "\""]
+  ],
+	"folding": {
+    "markers": {
+      "start": "^\\s*\\b(graph|flowchart|sequenceDiagram|gantt|classDiagram|stateDiagram|pie|erDiagram|journey|requirementDiagram|gitGraph)\b",
+      "end": "^\\s*$"
+    }
+  }
+}

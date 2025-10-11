@@ -1,0 +1,139 @@
+{
+  "name": "mermaid-graph",
+  "displayName": "Mermaid Graph",
+  "description": "Mermaid diagram previewer for Visual Studio Code",
+  "icon": "resources/logo.png",
+  "publisher": "JsonLee12138",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JsonLee12138/mmdx"
+  },
+  "homepage": "https://github.com/JsonLee12138/mmdx",
+  "keywords": [
+    "mermaid",
+    "graph",
+    "diagram",
+    "preview"
+  ],
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Data Visualization"
+  ],
+  "activationEvents": [
+    "onCommand:mermaid-graph.ShowPreview",
+    "onLanguage:mermaid",
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "menus": {
+      "editor/title": [
+        {
+          "command": "mermaid-graph.ShowPreview",
+          "when": "editorLangId == mermaid",
+          "group": "navigation@99",
+          "icon": "$(eye)"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "mermaid-graph.ShowPreview",
+          "when": "editorLangId == mermaid",
+          "group": "navigation@99",
+          "icon": "$(eye)"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "mermaid-graph.ShowPreview",
+        "title": "Mermaid Preview",
+        "category": "Mermaid",
+        "icon": "resources/mermaid.svg"
+      }
+    ],
+    "languages": [
+      {
+        "id": "mermaid",
+        "aliases": [
+          "Mermaid",
+          "mermaid"
+        ],
+        "extensions": [
+          ".mmd",
+          ".mermaid"
+        ],
+        "configuration": "./mermaid-language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "mermaid",
+        "scopeName": "markdown.mermaid.codeblock",
+        "path": "./syntaxes/mermaid.tmLanguage-markdown.json"
+      },
+      {
+        "scopeName": "markdown.mermaid.codeblock",
+        "path": "./syntaxes/mermaid.tmLanguage-markdown.json",
+        "injectTo": [
+          "text.html.markdown"
+        ],
+        "embeddedLanguages": {
+          "meta.embedded.block.mermaid": "mermaid"
+        }
+      },
+      {
+        "scopeName": "mdx.mermaid.codeblock",
+        "path": "./syntaxes/mermaid.tmLanguage-mdx.json",
+        "injectTo": [
+          "source.mdx"
+        ],
+        "embeddedLanguages": {
+          "mdx.embedded.mermaid": "mermaid"
+        }
+      },
+      {
+        "language": "mermaid",
+        "scopeName": "source.mermaid",
+        "path": "./syntaxes/mermaid.tmLanguage.json"
+      }
+    ]
+  },
+  "scripts": {
+    "gen:syntaxes": "pnpm --filter mermaid-markdown-syntax-highlighting run convertYaml",
+    "build:webview": "pnpm --filter @mermaid-graph/webview run build",
+    "vscode:prepublish": "pnpm run package",
+    "prebuild": "concurrently \"pnpm run gen:syntaxes\" \"pnpm run build:webview\"",
+    "compile": "pnpm run prebuild && webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "pnpm run compile-tests && pnpm run compile && pnpm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "@types/vscode": "^1.105.0",
+    "@typescript-eslint/eslint-plugin": "^8.45.0",
+    "@typescript-eslint/parser": "^8.45.0",
+    "@vscode/test-cli": "^0.0.11",
+    "@vscode/test-electron": "^2.5.2",
+    "concurrently": "^9.2.1",
+    "eslint": "^9.36.0",
+    "ts-loader": "^9.5.4",
+    "typescript": "^5.9.3",
+    "webpack": "^5.102.0",
+    "webpack-cli": "^6.0.1"
+  },
+  "dependencies": {
+    "@mermaid-graph/webview": "workspace:*",
+    "radash": "^12.1.1"
+  }
+}
