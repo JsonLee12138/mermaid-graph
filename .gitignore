@@ -1,0 +1,16 @@
+.vscode-test/**
+out/**
+dist/**
+syntaxes/**
+./webview/**
+node_modules/**
+.yarnrc
+**/eslint.config.mjs
+**/*.map
+**/.vscode-test.*
+
+# Project documentation and planning (ignored from git)
+plans/**
+tasks/**
+docs/**
+*.vsix
