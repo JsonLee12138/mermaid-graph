@@ -2,8 +2,9 @@
 
 [English Document](https://github.com/JsonLee12138/mermaid-graph/blob/main/README.md)
 
+[![preview image](https://github.com/JsonLee12138/mermaid-graph/blob/main/preview.png)](https://github.com/JsonLee12138/mermaid-graph/blob/main/preview.png)
+
 一个强大的 Mermaid 图表预览和语法高亮扩展，为 Visual Studio Code 提供完整的 Mermaid 支持。
-[![preview image](https://github.com/JsonLee12138/mermaid-graph/blob/main/preview.png)]()
 
 ## ✨ 功能特性
 
