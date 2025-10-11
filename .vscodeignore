@@ -1,8 +1,6 @@
 .vscode/**
 .vscode-test/**
 out/**
-syntaxes/**
-./webview/**
 node_modules/**
 packages/**/node_modules/**
 src/**

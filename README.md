@@ -2,7 +2,7 @@
 
 [中文文档](https://github.com/JsonLee12138/mermaid-graph/blob/main/README.zh-CN.md)
 
-[![preview image](https://github.com/JsonLee12138/mermaid-graph/blob/main/preview.png)](https://github.com/JsonLee12138/mermaid-graph/blob/main/preview.png)
+[![preview image](./preview.png)](https://github.com/JsonLee12138/mermaid-graph/blob/main/preview.png)
 
 A powerful Mermaid diagram preview and syntax highlighting extension for Visual Studio Code with complete Mermaid support.
 
