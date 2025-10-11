@@ -2,7 +2,6 @@
 out/**
 dist/**
 syntaxes/**
-./webview/**
 node_modules/**
 .yarnrc
 **/eslint.config.mjs
@@ -14,3 +13,4 @@ plans/**
 tasks/**
 docs/**
 *.vsix
+webview/**
