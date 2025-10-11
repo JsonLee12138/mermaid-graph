@@ -107,6 +107,14 @@ Issues and Pull Requests are welcome!
 
 MIT
 
+## 🙏 Acknowledgments
+
+This extension's syntax highlighting is based on [vscode-mermaid-syntax-highlight](https://github.com/bpruitt-goddard/vscode-mermaid-syntax-highlight) by bpruitt-goddard. We've extended and enhanced it to provide a more comprehensive Mermaid development experience.
+
+Special thanks to:
+- [vscode-mermaid-syntax-highlight](https://github.com/bpruitt-goddard/vscode-mermaid-syntax-highlight) - For the excellent syntax highlighting foundation
+- [Mermaid.js](https://mermaid.js.org/) - For the amazing diagramming and charting library
+
 ## 🔗 Links
 
 - [GitHub Repository](https://github.com/JsonLee12138/mermaid-graph)

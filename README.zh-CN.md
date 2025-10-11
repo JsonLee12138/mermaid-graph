@@ -107,6 +107,14 @@ graph TD
 
 MIT
 
+## 🙏 致谢
+
+本扩展的语法高亮功能基于 bpruitt-goddard 的 [vscode-mermaid-syntax-highlight](https://github.com/bpruitt-goddard/vscode-mermaid-syntax-highlight) 项目进行二次开发。我们在此基础上进行了扩展和增强，以提供更全面的 Mermaid 开发体验。
+
+特别感谢：
+- [vscode-mermaid-syntax-highlight](https://github.com/bpruitt-goddard/vscode-mermaid-syntax-highlight) - 提供了优秀的语法高亮基础
+- [Mermaid.js](https://mermaid.js.org/) - 提供了出色的图表和图形库
+
 ## 🔗 相关链接
 
 - [GitHub 仓库](https://github.com/JsonLee12138/mermaid-graph)
