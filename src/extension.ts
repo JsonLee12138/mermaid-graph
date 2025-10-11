@@ -6,6 +6,18 @@ import { debounce } from 'radash';
 import * as fs from 'fs';
 import pkgJson from '../package.json';
 
+function extractMermaidDiagramsModern(mdContent: string): string[] {
+  const pattern = /```mermaid\s*\n([\s\S]*?)```/g;
+  const results: string[] = [];
+  let match: RegExpExecArray | null;
+  // 使用 exec 循环，兼容性最好
+  while ((match = pattern.exec(mdContent)) !== null) {
+    results.push(match[1].trim());
+  }
+
+  return results;
+}
+
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
@@ -29,6 +41,13 @@ export function activate(context: vscode.ExtensionContext) {
 			vscode.window.showInformationMessage('Please preview a mermaid file!');
 			return;
 		}
+		if(activeEditor?.document.fileName.endsWith('.md')) {
+			const graph = extractMermaidDiagramsModern(activeEditor?.document.getText() ?? '');
+			if(graph) {
+				preview.createOrShow(JSON.stringify(graph));
+				return;
+			}
+		}
 		preview.createOrShow(activeEditor?.document.getText() ?? '');
 	});
 
@@ -41,7 +60,7 @@ export function deactivate() {
 }
 
 class MermaidPreview {
-	static viewType = 'mmdx.ShowPreview';
+	static viewType = 'mermaid-graph.ShowPreview';
 	static viewTitle = 'Mermaid Preview';
 	#ctx: vscode.ExtensionContext;
 	#panel: vscode.WebviewPanel | null = null;
@@ -155,24 +174,7 @@ class MermaidPreview {
 				return `${attr}="${uri}"`;
 			}
 		);
-		console.log('html', html);
 		return html;
-		// const scriptUri = this.#panel.webview.asWebviewUri(vscode.Uri.file(path.join(this.#webviewSourceRootPath, 'index.js')));
-		// const styleUri = this.#panel.webview.asWebviewUri(vscode.Uri.file(path.join(this.#webviewSourceRootPath, 'index.css')));
-		// return `<!DOCTYPE html>
-		//         <html lang="en">
-		//         <head>
-		//             <meta charset="UTF-8">
-		//             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-		//             <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src ${this.#panel.webview.cspSource} 'unsafe-inline'; script-src 'nonce-${this.#nonce}' ${this.#panel.webview.cspSource}; img-src ${this.#panel.webview.cspSource} data: blob:;">
-		//             <title>Mermaid Preview</title>
-		// 						<script type="module" crossorigin src="${scriptUri}" nonce="${this.#nonce}"></script>
-		// <link rel="stylesheet" crossorigin href="${styleUri}" nonce="${this.#nonce}">
-		//         </head>
-		//         <body>
-		//             <div id="root"></div>
-		//         </body>
-		//         </html>`;
 	}
 
 	get webviewSourceRootURI(): vscode.Uri {

@@ -3,5 +3,8 @@ import { setupMermaid } from './mermaid.ts'
 
 const app = document.querySelector<HTMLDivElement>('#app')
 if(app) {
-  setupMermaid();
+  const mermaidInstance = setupMermaid();
+  if(import.meta.env.DEV) {
+    mermaidInstance.test()
+  }
 }

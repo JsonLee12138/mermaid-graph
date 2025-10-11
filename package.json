@@ -15,7 +15,7 @@
     "diagram",
     "preview"
   ],
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.80.0"
   },
@@ -65,7 +65,8 @@
         ],
         "extensions": [
           ".mmd",
-          ".mermaid"
+          ".mermaid",
+          ".md"
         ],
         "configuration": "./mermaid-language-configuration.json"
       }
@@ -105,6 +106,7 @@
   },
   "scripts": {
     "gen:syntaxes": "pnpm --filter mermaid-markdown-syntax-highlighting run convertYaml",
+    "dev:webview": "pnpm --filter @mermaid-graph/webview run dev",
     "build:webview": "pnpm --filter @mermaid-graph/webview run build",
     "vscode:prepublish": "pnpm run package",
     "build:vsce": "pnpm run package && vsce package --no-dependencies",
@@ -132,7 +134,9 @@
     "ts-loader": "^9.5.4",
     "typescript": "^5.9.3",
     "webpack": "^5.102.0",
-    "webpack-cli": "^6.0.1"
+    "webpack-cli": "^6.0.1",
+    "@antfu/eslint-config": "^5.4.1",
+    "eslint-plugin-format": "^1.0.1"
   },
   "dependencies": {
     "@mermaid-graph/webview": "workspace:*",
