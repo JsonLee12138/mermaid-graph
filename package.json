@@ -1,34 +1,34 @@
 {
+  "publisher": "JsonLee12138",
   "name": "mermaid-graph",
   "displayName": "Mermaid Graph",
+  "version": "0.0.2",
   "description": "Mermaid diagram previewer for Visual Studio Code",
-  "icon": "resources/logo.png",
-  "publisher": "JsonLee12138",
+  "homepage": "https://github.com/JsonLee12138/mermaid-graph",
   "repository": {
     "type": "git",
     "url": "https://github.com/JsonLee12138/mermaid-graph"
   },
-  "homepage": "https://github.com/JsonLee12138/mermaid-graph",
   "keywords": [
     "mermaid",
     "graph",
     "diagram",
     "preview"
   ],
-  "version": "0.0.2",
-  "engines": {
-    "vscode": "^1.80.0"
-  },
   "categories": [
     "Programming Languages",
     "Data Visualization"
   ],
+  "main": "./dist/extension.js",
+  "icon": "resources/logo.png",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
   "activationEvents": [
     "onCommand:mermaid-graph.ShowPreview",
     "onLanguage:mermaid",
     "onStartupFinished"
   ],
-  "main": "./dist/extension.js",
   "contributes": {
     "menus": {
       "editor/title": [
@@ -110,7 +110,7 @@
     "build:webview": "pnpm --filter @mermaid-graph/webview run build",
     "vscode:prepublish": "pnpm run package",
     "build:vsce": "pnpm run package && vsce package --no-dependencies",
-    "prebuild": "concurrently \"pnpm run gen:syntaxes\" \"pnpm run build:webview\"",
+    "prebuild": "concurrently --kill-others-on-fail \"pnpm run gen:syntaxes\" \"pnpm run build:webview\"",
     "compile": "pnpm run prebuild && webpack",
     "watch": "webpack --watch",
     "package": "pnpm run prebuild &&  webpack --mode production --devtool hidden-source-map",
@@ -120,7 +120,12 @@
     "lint": "eslint src",
     "test": "vscode-test"
   },
+  "dependencies": {
+    "@mermaid-graph/webview": "workspace:*",
+    "radash": "^12.1.1"
+  },
   "devDependencies": {
+    "@antfu/eslint-config": "^5.4.1",
     "@types/mocha": "^10.0.10",
     "@types/node": "22.x",
     "@types/vscode": "^1.80.0",
@@ -131,15 +136,10 @@
     "@vscode/vsce": "^3.6.2",
     "concurrently": "^9.2.1",
     "eslint": "^9.36.0",
+    "eslint-plugin-format": "^1.0.1",
     "ts-loader": "^9.5.4",
     "typescript": "^5.9.3",
     "webpack": "^5.102.0",
-    "webpack-cli": "^6.0.1",
-    "@antfu/eslint-config": "^5.4.1",
-    "eslint-plugin-format": "^1.0.1"
-  },
-  "dependencies": {
-    "@mermaid-graph/webview": "workspace:*",
-    "radash": "^12.1.1"
+    "webpack-cli": "^6.0.1"
   }
 }

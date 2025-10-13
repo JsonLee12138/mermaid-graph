@@ -43,6 +43,12 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Debug - Check syntax generation
+        run: |
+          pnpm run gen:syntaxes
+          echo "Checking syntaxes directory:"
+          ls -la syntaxes/
+
       - name: Build VSIX
         run: pnpm run build:vsce
 
