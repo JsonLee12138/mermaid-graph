@@ -1,0 +1,79 @@
+- comment: Gantt Diagram
+  begin: ^\s*(gantt)
+  beginCaptures:
+    '1':
+      name: keyword.control.mermaid
+  patterns:
+    - match: \%%.*
+      name: comment
+    - match: !regex |-
+        ^\s*(dateFormat)\s+ # dateFormat
+        ([\w\-\.]+) # format
+      captures:
+        '1':
+          name: keyword.control.mermaid
+        '2':
+          name: entity.name.function.mermaid
+    - match: !regex |-
+        ^\s*(axisFormat)\s+ # axisFormat
+        ([\w\%\/\\\-\.]+) # format
+      captures:
+        '1':
+          name: keyword.control.mermaid
+        '2':
+          name: entity.name.function.mermaid
+    - match: !regex |-
+        (tickInterval)\s+ # tickInterval
+        (([1-9][0-9]*)(millisecond|second|minute|hour|day|week|month)) # format
+      captures:
+        '1':
+          name: keyword.control.mermaid
+        '2':
+          name: string
+    - match: !regex |-
+        ^\s*(title)\s+ # title
+        (\s*["\(\)$&%\^/#.,?!;:*+=<>\'\\\-\w\s]*) # text
+      captures:
+        '1':
+          name: keyword.control.mermaid
+        '2':
+          name: string
+    - match: !regex |-
+        ^\s*(excludes)\s+ # excludes
+        ((?:[\d\-,\s]+|monday|tuesday|wednesday|thursday|friday|saturday|sunday|weekends)+) # date or weekday
+      captures:
+        '1':
+          name: keyword.control.mermaid
+        '2':
+          name: string
+    - match: !regex |-
+        ^\s+(todayMarker)\s+ # todayMarker
+        (.*)$ # "off" or styles
+      captures:
+        '1':
+          name: keyword.control.mermaid
+        '2':
+          name: string
+    - match: !regex |-
+        ^\s*(section)\s+ # section
+        (\s*["\(\)$&%\^/#.,?!;:*+=<>\'\\\-\w\s]*) # text
+      captures:
+        '1':
+          name: keyword.control.mermaid
+        '2':
+          name: string
+    - begin: !regex |-
+        ^\s(.*) # Task Text
+        (:) # :
+      beginCaptures:
+        '1':
+          name: string
+        '2':
+          name: keyword.control.mermaid
+      patterns:
+        - match: (crit|done|active|after)
+          name: entity.name.function.mermaid
+        - match: \%%.*
+          name: comment
+      end: '$'
+  end: (^|\G)(?=\s*[`:~]{3,}\s*$)

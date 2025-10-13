@@ -1,0 +1,704 @@
+- comment: C4 Diagram
+  begin: ^\s*(C4Context|C4Container|C4Component|C4Dynamic|C4Deployment)
+  beginCaptures:
+    '1':
+      name: keyword.control.mermaid
+  patterns:
+    - match: \%%.*
+      name: comment
+    - comment: '(title)(title text)'
+      match: !regex |-
+        ^\s*(title)\s+ # title
+        (\s*["\(\)$&%\^/#.,?!;:*+=<>\'\\\-\w\s]*) # text
+      captures:
+        '1':
+          name: keyword.control.mermaid
+        '2':
+          name: string
+    - comment: '(UpdateElementStyle)(element)(bgColor)(fontColor)(borderColor)(shadowing)(shape)(sprite)(techn)(legend)'
+      match: !regex |-
+        \s*(UpdateElementStyle)\s* # UpdateElementStyle
+        \(([^,]+) # element
+        ,\s*([^,\)]+) # bgColor
+        (?:,\s*([^,\)]+))? # fontColor
+        (?:,\s*([^,\)]+))? # borderColor
+        (?:,\s*([^,\)]+))? # shadowing
+        (?:,\s*([^,\)]+))? # shape
+        (?:,\s*([^,\)]+))? # sprite
+        (?:,\s*([^,\)]+))? # techn
+        (?:,\s*([^,\)]+))? # legend
+        \)
+      captures:
+        '1':
+          name: keyword.control.mermaid
+        '2':
+          name: variable
+        '3':
+          name: string
+        '4':
+          name: string
+        '5':
+          name: string
+        '6':
+          name: string
+        '7':
+          name: string
+        '8':
+          name: string
+        '9':
+          name: string
+        '10':
+          name: string
+    - comment: '(UpdateRelStyle)(from)(to)(textColor)(lineColor)(offsetX)(offsetY)'
+      match: !regex |-
+        \s*(UpdateRelStyle)\s* # UpdateRelStyle
+        \(([^,]+) # from
+        ,\s*([^,\)]+) # to
+        (?:,\s*([^,\)]+))? # textColor
+        (?:,\s*([^,\)]+))? # lineColor
+        (?:,\s*([^,\)]+))? # offsetX
+        (?:,\s*([^,\)]+))? # offsetY
+        \)
+      captures:
+        '1':
+          name: keyword.control.mermaid
+        '2':
+          name: variable
+        '3':
+          name: variable
+        '4':
+          name: string
+        '5':
+          name: string
+        '6':
+          name: string
+        '7':
+          name: string
+    - comment: '(UpdateLayoutConfig)(width)(height)'
+      match: !regex |-
+        \s*(UpdateLayoutConfig)\s* # UpdateLayoutConfig
+        \(([^,\)]+) # width
+        (?:,\s*([^,\)]+))? # height
+        \)
+      captures:
+        '1':
+          name: keyword.control.mermaid
+        '2':
+          name: string
+        '3':
+          name: string
+    - comment: '(Person/Person_Ext)(alias)("label")("descr")("sprite")("tags")("link")'
+      match: !regex |-
+        \s*(Person(?:_Ext)?)\s* # Person/Person_Ext
+        \(([^,]+) # alias
+        ,\s*"([^"]*)" # label
+        (?:,\s*"([^"]*)")? # descr
+        (?:,\s*"([^"]*)")? # sprite
+        (?:,\s*\$([^,\)]+))? # tags
+        (?:,\s*\$([^,\)]+))? # link
+        \)
+      captures:
+        '1':
+          name: keyword.control.mermaid
+        '2':
+          name: variable
+        '3':
+          name: string
+        '4':
+          name: string
+        '5':
+          name: string
+        '6':
+          name: string
+        '7':
+          name: string
+    - comment: '(System/System_Ext/SystemDb/SystemQueue/SystemDb_Ext/SystemQueue_Ext)(alias)("label")("descr")("sprite")("tags")("link")'
+      match: !regex |-
+        \s*(System(?:Db|Queue)?(?:_Ext)?)\s* # System variants with optional Db/Queue and _Ext
+        \(([^,]+) # alias
+        ,\s*"([^"]*)" # label
+        (?:,\s*"([^"]*)")? # descr
+        (?:,\s*"([^"]*)")? # sprite
+        (?:,\s*\$([^,\)]+))? # tags
+        (?:,\s*\$([^,\)]+))? # link
+        \)
+      captures:
+        '1':
+          name: keyword.control.mermaid
+        '2':
+          name: variable
+        '3':
+          name: string
+        '4':
+          name: string
+        '5':
+          name: string
+        '6':
+          name: string
+        '7':
+          name: string
+    - comment: '(Container/ContainerDb/ContainerQueue/ContainerDb_Ext/ContainerQueue_Ext)(alias)("label")("techn")("descr")("sprite")("tags")("link")'
+      match: !regex |-
+        \s*(Container(?:Db|Queue)?(?:_Ext)?)\s* # Container variants with optional Db/Queue and _Ext
+        \(([^,]+) # alias
+        ,\s*"([^"]*)" # label
+        (?:,\s*"([^"]*)")? # techn
+        (?:,\s*"([^"]*)")? # descr
+        (?:,\s*"([^"]*)")? # sprite
+        (?:,\s*\$([^,\)]+))? # tags
+        (?:,\s*\$([^,\)]+))? # link
+        \)
+      captures:
+        '1':
+          name: keyword.control.mermaid
+        '2':
+          name: variable
+        '3':
+          name: string
+        '4':
+          name: string
+        '5':
+          name: string
+        '6':
+          name: string
+        '7':
+          name: string
+        '8':
+          name: string
+    - comment: '(Component/ComponentDb/ComponentQueue/ComponentDb_Ext/ComponentQueue_Ext)(alias)("label")("techn")("descr")("sprite")("tags")("link")'
+      match: !regex |-
+        \s*(Component(?:Db|Queue)?(?:_Ext)?)\s* # Component variants with optional Db/Queue and _Ext
+        \(([^,]+) # alias
+        ,\s*"([^"]*)" # label
+        (?:,\s*"([^"]*)")? # techn
+        (?:,\s*"([^"]*)")? # descr
+        (?:,\s*"([^"]*)")? # sprite
+        (?:,\s*\$([^,\)]+))? # tags
+        (?:,\s*\$([^,\)]+))? # link
+        \)
+      captures:
+        '1':
+          name: keyword.control.mermaid
+        '2':
+          name: variable
+        '3':
+          name: string
+        '4':
+          name: string
+        '5':
+          name: string
+        '6':
+          name: string
+        '7':
+          name: string
+        '8':
+          name: string
+    - comment: '(Deployment_Node)(alias)("label")("type")("descr")("sprite")("tags")("link")'
+      match: !regex |-
+        \s*(Deployment_Node)\s* # Deployment_Node
+        \(([^,]+) # alias
+        ,\s*"([^"]*)" # label
+        (?:,\s*"([^"]*)")? # type
+        (?:,\s*"([^"]*)")? # descr
+        (?:,\s*"([^"]*)")? # sprite
+        (?:,\s*\$([^,\)]+))? # tags
+        (?:,\s*\$([^,\)]+))? # link
+        \)
+      captures:
+        '1':
+          name: keyword.control.mermaid
+        '2':
+          name: variable
+        '3':
+          name: string
+        '4':
+          name: string
+        '5':
+          name: string
+        '6':
+          name: string
+        '7':
+          name: string
+        '8':
+          name: string
+    - comment: '(Rel/BiRel/Rel_*)(from)(to)("label")("techn")("descr")("sprite")("tags")("link")'
+      match: !regex |-
+        \s*((?:Bi)?Rel(?:_Back|_Neighbor|_Down|_Up|_Left|_Right)?)\s* # Rel variants
+        \(([^,]+) # from
+        ,\s*([^,]+) # to
+        ,\s*"([^"]*)" # label
+        (?:,\s*"([^"]*)")? # techn
+        (?:,\s*"([^"]*)")? # descr
+        (?:,\s*"([^"]*)")? # sprite
+        (?:,\s*\$([^,\)]+))? # tags
+        (?:,\s*\$([^,\)]+))? # link
+        \)
+      captures:
+        '1':
+          name: keyword.control.mermaid
+        '2':
+          name: variable
+        '3':
+          name: variable
+        '4':
+          name: string
+        '5':
+          name: string
+        '6':
+          name: string
+        '7':
+          name: string
+        '8':
+          name: string
+        '9':
+          name: string
+    - comment: '(Boundary)(alias)("label")("type")?({)'
+      begin: !regex |-
+        \s*((?:Enterprise_|System_|Container_)?Boundary)\s* # Boundary variants
+        \(([^,]+) # alias
+        ,\s*"([^"]*)" # label
+        (?:,\s*"([^"]*)")? # type
+        \)\s*(\{) # {
+      beginCaptures:
+        '1':
+          name: keyword.control.mermaid
+        '2':
+          name: variable
+        '3':
+          name: string
+        '4':
+          name: string
+        '5':
+          name: keyword.control.mermaid
+      patterns:
+        - match: \%%.*
+          name: comment
+        - comment: '(Nested Boundary)(alias)("label")("type")?({)'
+          begin: !regex |-
+            \s*((?:Enterprise_|System_|Container_)?Boundary)\s* # Boundary variants
+            \(([^,]+) # alias
+            ,\s*"([^"]*)" # label
+            (?:,\s*"([^"]*)")? # type
+            \)\s*(\{) # {
+          beginCaptures:
+            '1':
+              name: keyword.control.mermaid
+            '2':
+              name: variable
+            '3':
+              name: string
+            '4':
+              name: string
+            '5':
+              name: keyword.control.mermaid
+          patterns:
+            - match: \%%.*
+              name: comment
+            - comment: '(Deeply Nested Boundary)(alias)("label")("type")?({)'
+              begin: !regex |-
+                \s*((?:Enterprise_|System_|Container_)?Boundary)\s* # Boundary variants
+                \(([^,]+) # alias
+                ,\s*"([^"]*)" # label
+                (?:,\s*"([^"]*)")? # type
+                \)\s*(\{) # {
+              beginCaptures:
+                '1':
+                  name: keyword.control.mermaid
+                '2':
+                  name: variable
+                '3':
+                  name: string
+                '4':
+                  name: string
+                '5':
+                  name: keyword.control.mermaid
+              patterns:
+                - match: \%%.*
+                  name: comment
+                - comment: '(Person/Person_Ext) in deeply nested boundary'
+                  match: !regex |-
+                    \s*(Person(?:_Ext)?)\s*
+                    \(([^,]+)
+                    ,\s*"([^"]*)"
+                    (?:,\s*"([^"]*)")?
+                    (?:,\s*"([^"]*)")?
+                    (?:,\s*\$([^,\)]+))?
+                    (?:,\s*\$([^,\)]+))?
+                    \)
+                  captures:
+                    '1':
+                      name: keyword.control.mermaid
+                    '2':
+                      name: variable
+                    '3':
+                      name: string
+                    '4':
+                      name: string
+                    '5':
+                      name: string
+                    '6':
+                      name: string
+                    '7':
+                      name: string
+                - comment: '(System) in deeply nested boundary'
+                  match: !regex |-
+                    \s*(System(?:Db|Queue)?(?:_Ext)?)\s*
+                    \(([^,]+)
+                    ,\s*"([^"]*)"
+                    (?:,\s*"([^"]*)")?
+                    (?:,\s*"([^"]*)")?
+                    (?:,\s*\$([^,\)]+))?
+                    (?:,\s*\$([^,\)]+))?
+                    \)
+                  captures:
+                    '1':
+                      name: keyword.control.mermaid
+                    '2':
+                      name: variable
+                    '3':
+                      name: string
+                    '4':
+                      name: string
+                    '5':
+                      name: string
+                    '6':
+                      name: string
+                    '7':
+                      name: string
+                - comment: '(Container) in deeply nested boundary'
+                  match: !regex |-
+                    \s*(Container(?:Db|Queue)?(?:_Ext)?)\s*
+                    \(([^,]+)
+                    ,\s*"([^"]*)"
+                    (?:,\s*"([^"]*)")?
+                    (?:,\s*"([^"]*)")?
+                    (?:,\s*"([^"]*)")?
+                    (?:,\s*\$([^,\)]+))?
+                    (?:,\s*\$([^,\)]+))?
+                    \)
+                  captures:
+                    '1':
+                      name: keyword.control.mermaid
+                    '2':
+                      name: variable
+                    '3':
+                      name: string
+                    '4':
+                      name: string
+                    '5':
+                      name: string
+                    '6':
+                      name: string
+                    '7':
+                      name: string
+                    '8':
+                      name: string
+                - comment: '(Component) in deeply nested boundary'
+                  match: !regex |-
+                    \s*(Component(?:Db|Queue)?(?:_Ext)?)\s*
+                    \(([^,]+)
+                    ,\s*"([^"]*)"
+                    (?:,\s*"([^"]*)")?
+                    (?:,\s*"([^"]*)")?
+                    (?:,\s*"([^"]*)")?
+                    (?:,\s*\$([^,\)]+))?
+                    (?:,\s*\$([^,\)]+))?
+                    \)
+                  captures:
+                    '1':
+                      name: keyword.control.mermaid
+                    '2':
+                      name: variable
+                    '3':
+                      name: string
+                    '4':
+                      name: string
+                    '5':
+                      name: string
+                    '6':
+                      name: string
+                    '7':
+                      name: string
+                    '8':
+                      name: string
+                - comment: '(Deployment_Node) in deeply nested boundary'
+                  match: !regex |-
+                    \s*(Deployment_Node)\s*
+                    \(([^,]+)
+                    ,\s*"([^"]*)"
+                    (?:,\s*"([^"]*)")?
+                    (?:,\s*"([^"]*)")?
+                    (?:,\s*"([^"]*)")?
+                    (?:,\s*\$([^,\)]+))?
+                    (?:,\s*\$([^,\)]+))?
+                    \)
+                  captures:
+                    '1':
+                      name: keyword.control.mermaid
+                    '2':
+                      name: variable
+                    '3':
+                      name: string
+                    '4':
+                      name: string
+                    '5':
+                      name: string
+                    '6':
+                      name: string
+                    '7':
+                      name: string
+                    '8':
+                      name: string
+              end: (\})
+              endCaptures:
+                '1':
+                  name: keyword.control.mermaid
+            - comment: '(Person/Person_Ext) in nested boundary'
+              match: !regex |-
+                \s*(Person(?:_Ext)?)\s*
+                \(([^,]+)
+                ,\s*"([^"]*)"
+                (?:,\s*"([^"]*)")?
+                (?:,\s*"([^"]*)")?
+                (?:,\s*\$([^,\)]+))?
+                (?:,\s*\$([^,\)]+))?
+                \)
+              captures:
+                '1':
+                  name: keyword.control.mermaid
+                '2':
+                  name: variable
+                '3':
+                  name: string
+                '4':
+                  name: string
+                '5':
+                  name: string
+                '6':
+                  name: string
+                '7':
+                  name: string
+            - comment: '(System) in nested boundary'
+              match: !regex |-
+                \s*(System(?:Db|Queue)?(?:_Ext)?)\s*
+                \(([^,]+)
+                ,\s*"([^"]*)"
+                (?:,\s*"([^"]*)")?
+                (?:,\s*"([^"]*)")?
+                (?:,\s*\$([^,\)]+))?
+                (?:,\s*\$([^,\)]+))?
+                \)
+              captures:
+                '1':
+                  name: keyword.control.mermaid
+                '2':
+                  name: variable
+                '3':
+                  name: string
+                '4':
+                  name: string
+                '5':
+                  name: string
+                '6':
+                  name: string
+                '7':
+                  name: string
+            - comment: '(Container) in nested boundary'
+              match: !regex |-
+                \s*(Container(?:Db|Queue)?(?:_Ext)?)\s*
+                \(([^,]+)
+                ,\s*"([^"]*)"
+                (?:,\s*"([^"]*)")?
+                (?:,\s*"([^"]*)")?
+                (?:,\s*"([^"]*)")?
+                (?:,\s*\$([^,\)]+))?
+                (?:,\s*\$([^,\)]+))?
+                \)
+              captures:
+                '1':
+                  name: keyword.control.mermaid
+                '2':
+                  name: variable
+                '3':
+                  name: string
+                '4':
+                  name: string
+                '5':
+                  name: string
+                '6':
+                  name: string
+                '7':
+                  name: string
+                '8':
+                  name: string
+            - comment: '(Component) in nested boundary'
+              match: !regex |-
+                \s*(Component(?:Db|Queue)?(?:_Ext)?)\s*
+                \(([^,]+)
+                ,\s*"([^"]*)"
+                (?:,\s*"([^"]*)")?
+                (?:,\s*"([^"]*)")?
+                (?:,\s*"([^"]*)")?
+                (?:,\s*\$([^,\)]+))?
+                (?:,\s*\$([^,\)]+))?
+                \)
+              captures:
+                '1':
+                  name: keyword.control.mermaid
+                '2':
+                  name: variable
+                '3':
+                  name: string
+                '4':
+                  name: string
+                '5':
+                  name: string
+                '6':
+                  name: string
+                '7':
+                  name: string
+                '8':
+                  name: string
+            - comment: '(Deployment_Node) in nested boundary'
+              match: !regex |-
+                \s*(Deployment_Node)\s*
+                \(([^,]+)
+                ,\s*"([^"]*)"
+                (?:,\s*"([^"]*)")?
+                (?:,\s*"([^"]*)")?
+                (?:,\s*"([^"]*)")?
+                (?:,\s*\$([^,\)]+))?
+                (?:,\s*\$([^,\)]+))?
+                \)
+              captures:
+                '1':
+                  name: keyword.control.mermaid
+                '2':
+                  name: variable
+                '3':
+                  name: string
+                '4':
+                  name: string
+                '5':
+                  name: string
+                '6':
+                  name: string
+                '7':
+                  name: string
+                '8':
+                  name: string
+          end: (\})
+          endCaptures:
+            '1':
+              name: keyword.control.mermaid
+        - comment: '(Person/Person_Ext) in boundary'
+          match: !regex |-
+            \s*(Person(?:_Ext)?)\s*
+            \(([^,]+)
+            ,\s*"([^"]*)"
+            (?:,\s*"([^"]*)")?
+            (?:,\s*"([^"]*)")?
+            (?:,\s*\$([^,\)]+))?
+            (?:,\s*\$([^,\)]+))?
+            \)
+          captures:
+            '1':
+              name: keyword.control.mermaid
+            '2':
+              name: variable
+            '3':
+              name: string
+            '4':
+              name: string
+            '5':
+              name: string
+            '6':
+              name: string
+            '7':
+              name: string
+        - comment: '(System) in boundary'
+          match: !regex |-
+            \s*(System(?:Db|Queue)?(?:_Ext)?)\s*
+            \(([^,]+)
+            ,\s*"([^"]*)"
+            (?:,\s*"([^"]*)")?
+            (?:,\s*"([^"]*)")?
+            (?:,\s*\$([^,\)]+))?
+            (?:,\s*\$([^,\)]+))?
+            \)
+          captures:
+            '1':
+              name: keyword.control.mermaid
+            '2':
+              name: variable
+            '3':
+              name: string
+            '4':
+              name: string
+            '5':
+              name: string
+            '6':
+              name: string
+            '7':
+              name: string
+        - comment: '(Container) in boundary'
+          match: !regex |-
+            \s*(Container(?:Db|Queue)?(?:_Ext)?)\s*
+            \(([^,]+)
+            ,\s*"([^"]*)"
+            (?:,\s*"([^"]*)")?
+            (?:,\s*"([^"]*)")?
+            (?:,\s*"([^"]*)")?
+            (?:,\s*\$([^,\)]+))?
+            (?:,\s*\$([^,\)]+))?
+            \)
+          captures:
+            '1':
+              name: keyword.control.mermaid
+            '2':
+              name: variable
+            '3':
+              name: string
+            '4':
+              name: string
+            '5':
+              name: string
+            '6':
+              name: string
+            '7':
+              name: string
+            '8':
+              name: string
+        - comment: '(Component) in boundary'
+          match: !regex |-
+            \s*(Component(?:Db|Queue)?(?:_Ext)?)\s*
+            \(([^,]+)
+            ,\s*"([^"]*)"
+            (?:,\s*"([^"]*)")?
+            (?:,\s*"([^"]*)")?
+            (?:,\s*"([^"]*)")?
+            (?:,\s*\$([^,\)]+))?
+            (?:,\s*\$([^,\)]+))?
+            \)
+          captures:
+            '1':
+              name: keyword.control.mermaid
+            '2':
+              name: variable
+            '3':
+              name: string
+            '4':
+              name: string
+            '5':
+              name: string
+            '6':
+              name: string
+            '7':
+              name: string
+            '8':
+              name: string
+      end: (\})
+      endCaptures:
+        '1':
+          name: keyword.control.mermaid
+  end: (^|\G)(?=\s*[`:~]{3,}\s*$)
