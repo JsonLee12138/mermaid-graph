@@ -1,0 +1,39 @@
+- comment: User Journey
+  begin: ^\s*(journey)
+  beginCaptures:
+    '1':
+      name: keyword.control.mermaid
+  patterns:
+    - match: \%%.*
+      name: comment
+    - match: !regex |-
+        ^\s*(title|section)\s+ # title or section
+        (\s*["\(\)$&%\^/#.,?!;:*+=<>\'\\\-\w\s]*) # text
+      captures:
+        '1':
+          name: keyword.control.mermaid
+        '2':
+          name: string
+    - begin: !regex |-
+        \s*(["\(\)$&%\^/.,?!*+=<>\'\\\-\w\s]*) # (task name)
+        \s*(:) # (:)
+        \s*(\d+) # (score)
+        \s*(:) # (:)
+      beginCaptures:
+        '1':
+          name: string
+        '2':
+          name: keyword.control.mermaid
+        '3':
+          name: constant.numeric.decimal.mermaid
+        '4':
+          name: keyword.control.mermaid
+      patterns:
+        - comment: (taskName)
+          match: !regex |-
+            \s*,?\s*([^,#\n]+) # task name
+          captures:
+            '1':
+              name: variable
+      end: $
+  end: (^|\G)(?=\s*[`:~]{3,}\s*$)

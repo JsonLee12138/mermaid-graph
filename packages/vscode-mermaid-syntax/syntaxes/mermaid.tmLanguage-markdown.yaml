@@ -1,0 +1,30 @@
+---
+fileTypes: []
+injectionSelector: L:text.html.markdown
+patterns:
+  - include: '#mermaid-code-block'
+  - include: '#mermaid-code-block-with-attributes'
+  - include: '#mermaid-ado-code-block'
+repository:
+  mermaid-code-block:
+    begin: (?i)(?<=[`~])mermaid(\s+[^`~]*)?$
+    end: (^|\G)(?=\s*[`~]{3,}\s*$)
+    contentName: 'meta.embedded.block.mermaid'
+    patterns:
+      - include: '#mermaid'
+  mermaid-code-block-with-attributes:
+    begin: (?i)(?<=[`~])\{\s*\.?mermaid(\s+[^`~]*)?$
+    end: (^|\G)(?=\s*[`~]{3,}\s*$)
+    contentName: 'meta.embedded.block.mermaid'
+    patterns:
+      - include: '#mermaid'
+  mermaid-ado-code-block:
+    begin: (?i)\s*:::\s*mermaid\s*$
+    end: \s*:::\s*
+    contentName: 'meta.embedded.block.mermaid'
+    patterns:
+      - include: '#mermaid'
+  mermaid:
+    patterns: !!import/deep
+      - diagrams/
+scopeName: markdown.mermaid.codeblock

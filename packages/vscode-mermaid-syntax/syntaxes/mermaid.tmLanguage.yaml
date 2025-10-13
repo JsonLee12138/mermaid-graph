@@ -1,0 +1,10 @@
+---
+fileTypes:
+  - mermaid
+patterns:
+  - include: '#mermaid'
+repository:
+  mermaid:
+    patterns: !!import/deep
+      - diagrams/
+scopeName: source.mermaid
