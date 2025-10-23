@@ -2,7 +2,7 @@
   "publisher": "JsonLee12138",
   "name": "mermaid-graph",
   "displayName": "Mermaid Graph",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Mermaid diagram previewer for Visual Studio Code",
   "homepage": "https://github.com/JsonLee12138/mermaid-graph",
   "repository": {
