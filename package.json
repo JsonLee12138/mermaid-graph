@@ -34,16 +34,16 @@
       "editor/title": [
         {
           "command": "mermaid-graph.ShowPreview",
-          "when": "editorLangId == mermaid",
-          "group": "navigation@99",
+          "when": "editorLangId == mermaid || editorLangId == markdown",
+          "group": "navigation@1",
           "icon": "$(eye)"
         }
       ],
       "editor/context": [
         {
           "command": "mermaid-graph.ShowPreview",
-          "when": "editorLangId == mermaid",
-          "group": "navigation@99",
+          "when": "editorLangId == mermaid || editorLangId == markdown",
+          "group": "navigation@1",
           "icon": "$(eye)"
         }
       ]
@@ -65,8 +65,7 @@
         ],
         "extensions": [
           ".mmd",
-          ".mermaid",
-          ".md"
+          ".mermaid"
         ],
         "configuration": "./mermaid-language-configuration.json"
       }
